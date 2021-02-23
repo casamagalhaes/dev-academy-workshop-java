@@ -30,28 +30,14 @@ Note: Essas descrições são parcialmente baseado na realidade...
 
 
 
-### Agenda
-#### Dia 1
-- Conceitos API e REST
-- Iniciando com Spring Boot
-- Hello API - `/hello`
-- Modelos e pesistência
-- API CRUD
+![Image](imagens/cronograma.png)
 
 
 
-### Agenda
-#### Dia 2
-- Validações
-- Querying
- - FiQL
- - GraphQL
- - Paginação
--Testes
+![Image](imagens/api.png)
 
 
 
-### API
 - _Application Programming Interface_
 - Conjunto de instruções e padrões de programação que servem para *fornecer dados e informações* relevantes de uma determinada aplicação
 
