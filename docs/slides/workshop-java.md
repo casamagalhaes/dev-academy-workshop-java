@@ -30,7 +30,52 @@ Note: Essas descrições são parcialmente baseado na realidade...
 
 
 
+<div style="float: left; width: 35%"> 
+
 ![Image](imagens/cronograma.png)
+
+</div>
+<div style="float: right; width: 40%;">
+
+<div style="text-align:left">
+
+<h6> Dia 1 </h6>
+<span style="font-size: 17px"> 
+
+ - Conceitos API e REST
+ 
+ - Iniciando com Spring Boot
+ 
+ - Hello API - `/hello`
+ 
+ - Modelos e pesistência
+
+ - API CRUD
+
+</span>
+
+***
+
+<h6> Dia 2 </h6>
+
+<span style="font-size: 17px"> 
+
+ - Validações
+
+ - Querying
+  - FiQL
+  - GraphQL
+  - Paginação
+
+ - Testes
+
+</span>
+</div>
+</div>
+
+
+
+## Conceitos
 
 
 
@@ -38,8 +83,16 @@ Note: Essas descrições são parcialmente baseado na realidade...
 
 
 
+### API
+
 - _Application Programming Interface_
 - Conjunto de instruções e padrões de programação que servem para *fornecer dados e informações* relevantes de uma determinada aplicação
+- Vantagens
+- Exemplos: (PIX)
+
+
+
+### Evolução API
 
 
 
