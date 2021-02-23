@@ -1,4 +1,4 @@
-#### DevAcademy 
+![Image](imagens/devacademy.png)
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-![Image](imagens/java-json.png)
+![Image](imagens/techs.png)
 
 
 
