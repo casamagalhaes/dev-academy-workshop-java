@@ -80,6 +80,9 @@ Note: Essas descrições são parcialmente baseado na realidade...
 
 
 ![Image](imagens/api.png)
+Note: 
+- Falar das conexões
+- Exemplos de APIs
 
 
 
@@ -89,6 +92,8 @@ Note: Essas descrições são parcialmente baseado na realidade...
 - Conjunto de instruções e padrões de programação que servem para *fornecer dados e informações* relevantes de uma determinada aplicação
 - Vantagens
 - Exemplos: (PIX)
+Note:
+- Outras coisas de APIs 
 
 
 
@@ -104,11 +109,100 @@ Note:
 
 
 
+![Image](imagens/http.png)
+Note:
+- basicamente é o protocolo de comunicação que rege a maioria das interações na web
+- usado na comunicação cliente-servidor
+- comunicação usando mensagens
+- request(client) <-> resposta(server)
+- composição: (header | body) (pedaço da msg)
+- informações da msg status/metodos, etc
+
+
+
 ### HTTP
 - _Hipertext Transfer Protocol_
 - Projetado para permitir elementos conectados em rede estabelecer comunicação cliente-servidor
 - Protocolo de camada de aplicação projetado dentro do framework da suite de protocolos de internet (TCP/IP)
 - Baseado em requisição - resposta (Request/Response)
+
+
+
+### Headers
+- 
+
+
+
+### Body 
+
+
+
+### Status
+- Feedback do servidor
+
+- Classes:
+<div style="font-size:28px">
+<ul>
+<li>
+    <b>1xx</b> - Até agora tudo bem, mas tá rolando ainda... <span style="color: blue">(Processamento)</span>
+</li>
+<li>
+    <b>2XX</b> - Deu certo, chapa! <span style="color: green">(Confirmação)</span>
+</li>
+<li>
+    <b>3XX</b> - Pergunta no posto Ipiranga... <span style="color: gray">(Redirecionamento)</span>
+</li>
+<li>
+    <b>4XX</b> - Deu bom não! Aí eh contigo... <span style="color: purple">(Erro Cliente)</span>
+</li>
+<li>
+    <b>5XX</b> - Deu ruim. Mal minha... <span style="color: red">(Erro servidor)</span>
+</li>
+ </ul>
+</div>
+Note: 
+- Forma do servidor informar como a requisição foi processada
+- 100 - Tudo correu bem até então (informação parcial). Pode continuar; 102 - Processando; 200 - OK; 201 - Created; 202 - Accepted; 301 - Moved permanently; 400 - Bad request; 401 - Unauthorized; 404 - Not Found; 500 - Internal server error; 503 - Service unavailable.
+
+
+
+### Métodos (Verbos)
+- Indicam ação a ser executada
+- Mais usados:
+<div style="font-size:28px">
+<ul>
+<li>
+    <span style="color: blue">GET</span>    - Obter informação do(s) recurso(s)
+</li>
+<li>
+    <span style="color: blue">POST</span>   - Processar a informação contida na requisição
+</li>
+<li>
+    <span style="color: blue">PUT</span>    - Alterar o estado do recurso para o estado contido na requisição
+</li>
+<li>
+    <span style="color: blue">DELETE</span> - Delete né =]
+</li>
+</ul>
+</div>
+- Outros:
+<div style="font-size:28px">
+<ul>
+<li>
+    <span style="color: blue">PATCH</span>  - Alterar estado do recurso com requisição parcial
+</li>
+<li>
+    <span style="color: blue">HEAD</span>   - Similar ao `GET`, mas não tem _response body_
+</li>
+<li>
+    <span style="color: blue">OPTIONS</span>- Retorna dados de quais outros métodos e operações os servidor suporta
+</li>
+</ul>
+</div>
+
+Note: Esses são muito usados
+Menos usados mas muito útis. Tem mais... TRACE - rastreio de rede, retorna o q enviado / CONNECT - usado pra iniciar comunicação de duas vias com o recurso
+referencia: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods
 
 
 
@@ -166,33 +260,6 @@ Content-Length: ...
 }
 ```
 Note: Resposta textual (HTML, XML, JSON) e status HTTP. HATEOAS concede links para navegação e se comporta conforme o estado.
-
-
-
-#### HTTP _Methods_
-- `GET`    - Obter informação do(s) recurso(s)
-- `POST`   - Processar a informação contida na requisição
-- `PUT`    - Alterar o estado do recurso para o estado contido na requisição
-- `DELETE` - Delete né =]
-Note: Esses são muito usados
-
-
-
-#### HTTP _Methods_
-- `PATCH`  - Alterar estado do recurso com requisição parcial
-- `HEAD`   - Similar ao `GET` mas não tem _response body_
-- `OPTIONS`- Retorna dados de quais outros métodos e operações os servidor suporta
-Note: menos usados mas muito útis. Tem mais... TRACE - rastreio de rede, retorna o q enviado / CONNECT - usado pra iniciar comunicação de duas vias com o recurso
-
-
-
-#### HTTP _Status_
-- 1xx - Resposta informativa parcial
-- 2XX - Deu certo, chapa.
-- 3XX - Sei não, pergunta ali...
-- 4XX - Deu bom não, mas eh contigo...
-- 5XX - Deu ruim. Mal minha...
-Note: 100 - Continue; 102 - Processando; 200 - OK; 201 - Created; 202 - Accepted; 301 - Moved permanently; 400 - Bad request; 401 - Unauthorized; 404 - Not Found; 500 - Internal server error; 503 - Service unavailable.
 
 
 
