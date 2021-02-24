@@ -1,4 +1,4 @@
-![Image](imagens/devacademy.png)
+![Image](imagens/devacademy1.svg)
 
 
 
@@ -93,14 +93,22 @@ Note: Essas descrições são parcialmente baseado na realidade...
 
 
 ### Evolução API
+![Image](imagens/api-history.png)
+Note: 
+- EDI de 1948 com 1a implementação nos anos 1970, aeroporto de Londres; 
+- RPC dos anos 1970 com 1a implementação em 1982, depois XEROX, SUN...
+- CORBA (EAI), nos anos 1990, é uma das primeiras formas de API moderna, por permitir sistemas com diferentes implementações se comunicar, sem forçar uma alteração na sua implementação e estrutura
+- SOA, com o advento do XML as integrações ficaram mais focadas em webservices.
+- Microservices foi uma variação que entrou em cena quando SOA passou a ter predominância no mercado. Nos anos 2010s as Web APIs não só se tornaram relevantes mas dominaram o mercado como padrão para integração de apicações e serviços.
+
 
 
 
 ### HTTP
-- Status
-- Métodos
-- Headers
-- Body 
+- _Hipertext Transfer Protocol_
+- Projetado para permitir elementos conectados em rede estabelecer comunicação cliente-servidor
+- Protocolo de camada de aplicação projetado dentro do framework da suite de protocolos de internet (TCP/IP)
+- Baseado em requisição - resposta (Request/Response)
 
 
 
