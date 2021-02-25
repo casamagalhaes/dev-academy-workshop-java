@@ -112,11 +112,8 @@ Note:
 ![Image](imagens/http.png)
 Note:
 - basicamente é o protocolo de comunicação que rege a maioria das interações na web
-- usado na comunicação cliente-servidor
-- comunicação usando mensagens
-- request(client) <-> resposta(server)
-- composição: (header | body) (pedaço da msg)
-- informações da msg status/metodos, etc
+- se comunica usando mensagens
+- bastante usado na arquitetura cliente-servidor
 
 
 
@@ -128,12 +125,25 @@ Note:
 
 
 
+![Image](imagens/client-server.png)
+Note:
+- request(client) <-> resposta(server)
+- composição: (header | body) (pedaço da msg)
+- informações da msg status/metodos, etc
+
+
+
 ### Headers
-- 
-
-
-
+- Possui informações que serão utilizadas pelo servidor identificar e responder as mensagens de forma adequada
+***
 ### Body 
+- Onde os dados são enviados para o servidor. 
+    - EX: dados de um formulário para gravação
+Note: 
+- Content-Language: quais linguagens estão disponíveis (en-US, pt-BR)
+- Content-Type: indica o tipo de dados que deseja receber (text/html, application/json)
+- Método HTTP (GET, POST, DELETE)
+- Status, no caso das respostas (200, 201, 404, 403, 500)
 
 
 
@@ -200,14 +210,40 @@ Note:
 </ul>
 </div>
 
-Note: Esses são muito usados
-Menos usados mas muito útis. Tem mais... TRACE - rastreio de rede, retorna o q enviado / CONNECT - usado pra iniciar comunicação de duas vias com o recurso
+Note: 
+- Esses são muito usados
+- Menos usados mas muito útis. 
+- Tem mais... TRACE - rastreio de rede, retorna o q enviado / CONNECT - usado pra iniciar comunicação de duas vias com o recurso
 referencia: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods
 
 
 
-### REST
-- _Representational State Transfer_
+### Exemplos
+- `GET`
+    - www.livraria.com/livros?descricao=bonecos
+    - www.livraria.com/livros/100
+    - www.livraria.com/livros
+- `POST`
+    - www.livraria.com/livros 
+        > <span style="font-size: 20px; color: gray">data: {id: 101, descricao: A volta dos que não foram} </span>
+- `DELETE`: 
+    - www.livraria.com/livros/100
+Note:
+- Agora que já vimos boa parte da base da comunicação existente na wbe, vamos partir agora pra uma abstração de arquitetura, onde nos permitirá criar projetos bem definidos e viabilizar uma melhor comunicação entre aplicações.
+
+
+
+![Image](imagens/rest-fake-2.png)
+Note:
+- ops! Não esse tipo de rest(descanso)
+
+
+
+![Image](imagens/rest.png)
+
+
+
+- _Representational State Transfer_ (REST)
 - "Padrão" da arquitetura de software para interação de aplicações, usando múltiplos _Web services_.
 - _Web resources_
 - Textual (JSON, XML, HTML)
