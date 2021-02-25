@@ -244,10 +244,32 @@ Note:
 
 
 - _Representational State Transfer_ (REST)
+
+- Conjunto de princípios e definições para criar interfaces bem definidas
+
 - "Padrão" da arquitetura de software para interação de aplicações, usando múltiplos _Web services_.
+Note:
+- Transferência de Estado Representacional
+- Permite comunicação entre aplicações
+
+
+
+- Benefícios:
+    - facilidade de execução
+    - alto aproveitamento da infraestrutura da web
+    - flexibilidade
+Note:
+- escolha de formato que melhor se adequa. Ex: json, xml, html, etc
+
+
+
+
 - _Web resources_
 - Textual (JSON, XML, HTML)
 - Conjunto de operações (GET, POST, PUT, DELETE, PATCH, CONNECT, OPTIONS, TRACE)
+Note:
+- Web Resource ou Resource: identificação da funcionalidade/recurso
+
 
 
 
@@ -299,18 +321,72 @@ Note: Resposta textual (HTML, XML, JSON) e status HTTP. HATEOAS concede links pa
 
 
 
-#### Teste de Exemplo de código
+![Image](imagens/maos-a-obra.png)
+
+
+
+![Image](imagens/springboot-no-bg.png)
+- Spring Initializr
+    - Configuração
+    - Geração do projeto
+Note: 
+- o que é Spring Initializr?
+- o que representa os campos
+- etc
+
+
+
+![Image](imagens/visualstudio.png)
+- Importar projeto
+- Importar dependências
+- Run
+    - localhost:8080
+
+
+
+#### Criando primeiro controller
 ```java
 @RestController
 public class HelloController {
 
     @GetMapping("/hello")
-    public String hello(@AuthenticationPrincipal Principal principal) {
-        return "Hello, " + principal.getName() + "!";
+    public String hello() {
+        return "Hello, World!";
     }
 
 }
 ```
+
+
+
+![Image](imagens/postman.png)
+- Testando aplicação
+
+
+
+### Criando estrutura
+- Criar estrutura fake pra testar mockando dados
+Note:
+- Criar modelo entidade
+- Criar método que retorne uma lista fake
+
+
+
+### Consultando entidade
+- GET
+    - Ajustar método pra retornar lista fake
+
+
+
+### Gravando entidade
+- POST
+    - Gravar entidade na lista fake
+
+
+
+### Removendo entidade
+- DELETE
+    - Remover entidade da lista fake
 
 
 
