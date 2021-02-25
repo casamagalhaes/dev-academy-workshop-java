@@ -47,10 +47,8 @@ Note: Essas descrições são parcialmente baseado na realidade...
  - Iniciando com Spring Boot
  
  - Hello API - `/hello`
- 
- - Modelos e pesistência
 
- - API CRUD
+ - Mão na massa: API CRUD
 
 </span>
 
@@ -157,7 +155,7 @@ Note:
     <b>1xx</b> - Até agora tudo bem, mas tá rolando ainda... <span style="color: blue">(Processamento)</span>
 </li>
 <li>
-    <b>2XX</b> - Deu certo, chapa! <span style="color: green">(Confirmação)</span>
+    <b>2XX</b> - Deu certo, mah! <span style="color: green">(Confirmação)</span>
 </li>
 <li>
     <b>3XX</b> - Pergunta no posto Ipiranga... <span style="color: gray">(Redirecionamento)</span>
@@ -172,7 +170,11 @@ Note:
 </div>
 Note: 
 - Forma do servidor informar como a requisição foi processada
-- 100 - Tudo correu bem até então (informação parcial). Pode continuar; 102 - Processando; 200 - OK; 201 - Created; 202 - Accepted; 301 - Moved permanently; 400 - Bad request; 401 - Unauthorized; 404 - Not Found; 500 - Internal server error; 503 - Service unavailable.
+- 100 - Tudo correu bem até então (informação parcial). Pode continuar; 102 - Processando;
+- 200 - OK; 201 - Created; 202 - Accepted; 
+- 301 - Moved permanently;
+- 400 - Bad request; 401 - Unauthorized; 404 - Not Found;
+- 500 - Internal server error; 503 - Service unavailable.
 
 
 
@@ -225,7 +227,7 @@ referencia: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods
     - www.livraria.com/livros
 - `POST`
     - www.livraria.com/livros 
-        > <span style="font-size: 20px; color: gray">data: {id: 101, descricao: A volta dos que não foram} </span>
+        > <span style="font-size: 20px; color: gray">data: {id: 101, descricao: "A volta dos que não foram"} </span>
 - `DELETE`: 
     - www.livraria.com/livros/100
 Note:
@@ -344,6 +346,10 @@ Note:
 
 
 
+### !Antes... Sobre MVC
+
+
+
 #### Criando primeiro controller
 ```java
 @RestController
@@ -359,16 +365,66 @@ public class HelloController {
 
 
 
+### !Notas
+- Erros comuns (falso positivo ex. HTTP Status 200 e no body msg erro);
+- Falar sobre versionamento de APIs (tb versão do modelo);
+
+
+
 ![Image](imagens/postman.png)
 - Testando aplicação
 
 
 
-### Criando estrutura
-- Criar estrutura fake pra testar mockando dados
+### !Endpoint de Teste
+```
+GET /sqr-root/{number} (number=9)
+
+200 - OK
+Content-Type: text/plain
+
+Resultado: 3
+```
+
+
+
+### Explorando cenários
+- Criar estrutura fake pra testar mockando* dados
 Note:
 - Criar modelo entidade
 - Criar método que retorne uma lista fake
+- Explicar o que é MOCK
+
+//Exemplo1
+
+GET /sqr-root/:number
+
+200 - OK
+
+Content-Type: text/plain
+
+422
+
+//Exemplo2
+
+/frutas
+
+List<String> frutasArray = new ArrayList();
+
+POST /frutas
+Content-Type: text/plain
+
+maçã
+
+public void add(@RequestBody String fruta) {
+	frutasArray.add(fruta);
+}
+
+GET /frutas
+
+public List<String> get() {
+	return frutasArray;
+}
 
 
 
@@ -387,6 +443,16 @@ Note:
 ### Removendo entidade
 - DELETE
     - Remover entidade da lista fake
+
+
+
+### Iniciando o Projeto
+- `git clone projeto-hands-on` 
+
+
+
+### !Usando testes automatizados
+- Rest Assured
 
 
 
