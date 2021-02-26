@@ -1,8 +1,9 @@
-package br.com.casamagalhaes.worshop.apicrud.repository;
+package br.com.casamagalhaes.workshop.apicrud.repository;
 
-import br.com.casamagalhaes.worshop.apicrud.model.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import br.com.casamagalhaes.workshop.apicrud.model.Produto;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long>{

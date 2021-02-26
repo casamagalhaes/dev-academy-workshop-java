@@ -1,4 +1,4 @@
-package br.com.casamagalhaes.worshop.apicrud.service;
+package br.com.casamagalhaes.workshop.apicrud.service;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.casamagalhaes.worshop.apicrud.model.Produto;
-import br.com.casamagalhaes.worshop.apicrud.repository.ProdutoRepository;
+import br.com.casamagalhaes.workshop.apicrud.model.Produto;
+import br.com.casamagalhaes.workshop.apicrud.repository.ProdutoRepository;
 
 @Service
 public class ProdutoService {
