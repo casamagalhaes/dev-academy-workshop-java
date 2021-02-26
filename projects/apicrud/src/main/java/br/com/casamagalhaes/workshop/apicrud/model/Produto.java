@@ -1,4 +1,4 @@
-package br.com.casamagalhaes.worshop.apicrud.model;
+package br.com.casamagalhaes.workshop.apicrud.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Column;
@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import br.com.casamagalhaes.worshop.apicrud.enums.UnidadeMedida;
+import br.com.casamagalhaes.workshop.apicrud.enums.UnidadeMedida;
 
 @Entity
 public class Produto {

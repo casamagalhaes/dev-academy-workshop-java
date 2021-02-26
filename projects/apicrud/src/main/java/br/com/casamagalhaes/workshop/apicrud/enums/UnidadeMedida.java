@@ -1,4 +1,4 @@
-package br.com.casamagalhaes.worshop.apicrud.enums;
+package br.com.casamagalhaes.workshop.apicrud.enums;
 
 public enum UnidadeMedida {
     UNIDADE,
