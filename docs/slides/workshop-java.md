@@ -59,13 +59,16 @@ Note: Essas descrições são parcialmente baseado na realidade...
 <span style="font-size: 17px"> 
 
  - Validações
+ 
+ - Testes
 
- - Querying
+ - Documantação (Swagger)
+
+ - Querying (Overview)
   - FiQL
   - GraphQL
   - Paginação
 
- - Testes
 
 </span>
 </div>
