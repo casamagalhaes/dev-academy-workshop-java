@@ -1,4 +1,4 @@
-package br.com.casamagalhaes.worshop.apicrud.controller;
+package br.com.casamagalhaes.workshop.apicrud.controller;
 
 import java.util.List;
 
@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.casamagalhaes.worshop.apicrud.model.Produto;
-import br.com.casamagalhaes.worshop.apicrud.service.ProdutoService;
+import br.com.casamagalhaes.workshop.apicrud.model.Produto;
+import br.com.casamagalhaes.workshop.apicrud.service.ProdutoService;
 
 @RestController
 @RequestMapping("/produtos")
