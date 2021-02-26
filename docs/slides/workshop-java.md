@@ -343,9 +343,18 @@ Note:
 
 ![Image](imagens/visualstudio.png)
 - Importar projeto
+- Plugins
+```
+Java Extension Pack
+```
 - Importar dependências
+```
+./gradlew build
+```
 - Run
-    - localhost:8080
+```
+localhost:8080
+```
 
 
 
@@ -368,14 +377,50 @@ public class HelloController {
 
 
 
-### !Notas
-- Erros comuns (falso positivo ex. HTTP Status 200 e no body msg erro);
-- Falar sobre versionamento de APIs (tb versão do modelo);
-
-
 
 ![Image](imagens/postman.png)
 - Testando aplicação
+
+
+
+### Recebendo dados na URL
+- Query String 
+    - <span style="background-color: gray; color: white">@RequestParameter</span>
+
+- URI 
+    - <span style="background-color: gray; color: white">@PathVariable</span>
+Note:
+- QueryString são os parâmetros passados na URI em formato de query.
+
+
+
+### Calculando Raiz Quadrada
+```java
+    @RequestMapping(method = RequestMethod.GET, 
+                      path = "/raiz-quadrada/{numero}")
+    public Long calculaRaizQuadrada(@PathVariable Long numero) {
+        return numero * numero;
+    }
+```
+***
+```java
+    @RequestMapping(method = RequestMethod.GET, 
+                      path = "/raiz-quadrada-qs")
+    public Long calculaRaizQuadradaQS(@RequestParam Long numero) {
+        return numero * numero;
+    }
+```
+
+
+
+### Enviando dados - <span style="color: blue">POST</span>
+- 
+
+
+
+### !Notas
+- Erros comuns (falso positivo ex. HTTP Status 200 e no body msg erro);
+- Falar sobre versionamento de APIs (tb versão do modelo);
 
 
 
