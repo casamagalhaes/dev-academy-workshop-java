@@ -116,6 +116,7 @@ Note:
 Note: 
 - Content-Language: quais linguagens estão disponíveis (en-US, pt-BR)
 - Content-Type: indica o tipo de dados que deseja receber (text/html, application/json)
+- Accept-Headers
 - Método HTTP (GET, POST, DELETE)
 - Status, no caso das respostas (200, 201, 404, 403, 500)
 
@@ -223,12 +224,19 @@ Note:
 
 - _Application Programming Interface_
 - Conjunto de instruções e padrões de programação que servem para *fornecer dados e informações* relevantes de uma determinada aplicação
-- Vantagens
 - Exemplos: (PIX)
 Note:
 - Em português, Interface de Programação de Aplicações
 - Contrato para que outras aplicações se integrem com outra aplicação
 
+
+
+### Benefícios
+- Segurança na troca de informação
+- Redução de volume de dados
+Note:
+- Só se exibe o que se quer exibir (Segurança)
+- Envia dados específicos de acordo com a solicitação (Dados)
 
 
 
@@ -237,9 +245,10 @@ Note:
 
 - AWS, Azure
 
-- Facebook, Google
+- LinkedIn, Twitter, Facebook, Google
 
 - Booking
+
 Note: 
 - Empresas que disponibilizam API para que aplicações consigam se integrar aos seus sistemas e usar os serviços.
 
@@ -264,6 +273,9 @@ Note:
 
 
 ![Image](imagens/rest.png)
+Note:
+- Não é uma biblioteca. Não é uma tecnologia, um framework
+- É basicamente um conjunto de boas práticas pra construção de aplicações Web.
 
 
 
@@ -272,24 +284,25 @@ Note:
 - Conjunto de princípios e definições para criar interfaces bem definidas
 
 - "Padrão" da arquitetura de software para interação de aplicações, usando múltiplos _Web services_.
+
+- Tem como principal pilar o protocolo HTTP
 Note:
 - Transferência de Estado Representacional
 - Permite comunicação entre aplicações
 
 
 
-- Benefícios:
-    - facilidade de execução
-    - alto aproveitamento da infraestrutura da web
-    - flexibilidade
+### Benefícios:
+- Facilidade de execução
+- Alto aproveitamento da infraestrutura da web
+- Flexibilidade
 Note:
-- escolha de formato que melhor se adequa. Ex: json, xml, html, etc
+- Flexível para escolher de formato que melhor se adequa. Ex: json, xml, html, etc
 
 
 
-
+### Mais sobre REST
 - _Web resources_
-- Textual (JSON, XML, HTML)
 - Conjunto de operações (GET, POST, PUT, DELETE, PATCH, CONNECT, OPTIONS, TRACE)
 Note:
 - Web Resource ou Resource: identificação da funcionalidade/recurso
@@ -298,36 +311,33 @@ Note:
 
 
 ### E RESTful?
-- _Client-server_
-- _Stateless_
-- _Cacheable_
-- _Layered system_
-- Código sob demanda (opcional)
-Note: Seis requisitos definem uma arquitetura RESTful. Cliente-servidor; stateless; cacheability (capacidade de fornecer info para guardar/expirar respostas); suporte a camadas de sistema (proxy, load balancer não deve interferir na comunicação); O servidor pode eventualmente enviar código para o cliente executar...
+- Princípios:
+    - _Cliente - servidor_
+    - _Stateless_
+    - _Cacheable_
+    - _Layered system_
+    - Código sob demanda
+    - Interfaces Bem definidas (HATEOAS)
+Note: 
+- São 6 os requisitos que definem uma arquitetura RESTful. 
+- *Cliente-servidor*: deixa bem claro o que faz parte do cliente e o que faz parte do servidor. EX: cliente não precisa saber como os dados são salvos
+- *stateless*: cada comunicação é independente, ou seja, ela precisa mandar toda a informação necessária; 
+- *cacheability*: deve facilitar o cache do cliente (capacidade de fornecer info para guardar/expirar respostas); 
+    - suporte a camadas de sistema (proxy, load balancer não deve interferir na comunicação); 
+- *Sistema de Camadas*: uso de camadas pra facilitar a escalabilidade, confiabilidade e segurança
+- *Código sobre demanda*: enviar apenas as informações do recurso de acordo com o solicitado. (O servidor pode eventualmente enviar código para o cliente executar...)
+- *Interfaces bem definicas*: forma de identificar os recursos. É devolvida com a mensagem que outras rodas sobre o recurso, pra conseguir mais informações
+    - HATEOAS: recursos bem identificados; com a resposta de um get eu consigo fazer um post ou patch; headers (text/json), http status, ajudam a descrever as ações; Hypermedia as the engine of application state - assim como usuario acessando uma pagina as mensagens contem "links" para navegar pelos recursos
 
 
 
-### Nera 6? Falta um...
-
-
-
-#### Interface uniforme
-- Identificação de recurso nas requisições (`/pessoas`)
-- Manipulação de recursos por suas representações
-- Mensagens auto descritivas
-- HATEOAS
-Note: recursos bem identificados; com a resposta de um get eu consigo fazer um post ou patch; headers (text/json), http status, ajudam a descrever as ações; Hypermedia as the engine of application state - assim como usuario acessando uma pagina as mensagens contem "links" para navegar pelos recursos
-
-
-
+### Exemplo HATEAOS
+- Request
 ```log
 GET /pessoas/423
 Accept: text/json
 ```
-Note: Recurso (Pessoas)
-
-
-
+- Response
 ```log
 HTTP 200 - OK
 Content-Type: text/json
@@ -337,11 +347,19 @@ Content-Length: ...
     nome: "Fulano de Tal",
     idade: 25,
     links: {
-        cnh: "/pessoas/423/cnh"
+        cnh: "/pessoas/423/cnh",
+        endereco: "/pessoas/423/endereco"
     }
 }
 ```
 Note: Resposta textual (HTML, XML, JSON) e status HTTP. HATEOAS concede links para navegação e se comporta conforme o estado.
+- Slides Removidos
+### !Nera 6? Falta um...
+
+#### !Interface uniforme
+- Identificação de recurso nas requisições (`/pessoas`)
+- Manipulação de recursos por suas representações
+- Mensagens auto descritivas
 
 
 
