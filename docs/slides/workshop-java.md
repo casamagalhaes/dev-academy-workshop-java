@@ -47,9 +47,11 @@ Note: Essas descrições são parcialmente baseado na realidade...
     - API
     - REST
  
- - Iniciando com Spring Boot
+ - Preparando Ambiente
  
  - Hello API - `/hello`
+
+ - Mão na massa: API CRUD
 
 </span>
 
@@ -59,13 +61,13 @@ Note: Essas descrições são parcialmente baseado na realidade...
 
 <span style="font-size: 17px"> 
 
- - Mão na massa: API CRUD
+- Mão na massa: API CRUD (Cont.)
 
- - Validações
+- Validações
  
- - Testes
+- Testes
 
- - Documentação 
+- Documentação 
     - Swagger
 
 </span>
@@ -352,6 +354,7 @@ Content-Length: ...
     }
 }
 ```
+
 Note: Resposta textual (HTML, XML, JSON) e status HTTP. HATEOAS concede links para navegação e se comporta conforme o estado.
 - Slides Removidos
 ### !Nera 6? Falta um...
@@ -370,6 +373,7 @@ Note: Resposta textual (HTML, XML, JSON) e status HTTP. HATEOAS concede links pa
 ![Image](imagens/springboot-no-bg.png)
 - Spring Initializr
     - Configuração
+        - artifactId
     - Geração do projeto
 Note: 
 - o que é Spring Initializr?
@@ -380,13 +384,17 @@ Note:
 
 ![Image](imagens/visualstudio.png)
 - Importar projeto
-- Importar dependências
+    - Open _'path do projeto'_
+- Importar plugins
+    - Java Extension Pack
+    - Lombok
 - Run
-    - localhost:8080
+    - Abrir aba **Spring Boot Dashboard**
+    - Acessar: _localhost:8080_
 
 
 
-### !Antes... Sobre MVC
+![Image](imagens/mvc.png)
 
 
 
@@ -395,12 +403,60 @@ Note:
 @RestController
 public class HelloController {
 
-    @GetMapping("/hello")
+    @RequestMapping(method = RequestMethod.GET, 
+                      path = "/hello")
     public String hello() {
         return "Hello, World!";
     }
 
 }
+```
+
+
+
+![Image](imagens/postman.png)
+- Testando aplicação
+
+
+
+### Recebendo Dados
+- Query String (**/pessoa?id=1**)
+```
+...
+void metodo(@RequestParam Long numero){...}
+...
+```
+- URI (**/pessoa/1**)
+```
+...
+void metodo(@PathVariable Long numero){...}
+...
+```
+
+
+
+### Controller Raiz Quadrada
+```
+@RequestMapping(method = RequestMethod.GET, 
+                  path = "/raiz-quadrada/{numero}")
+    public Double calculaRaizQuadrada(@PathVariable Long numero) {
+        return Math.sqrt(numero.doubleValue());
+    }
+```
+Note: 
+- path variable tem que ter o mesmo nome da variável
+- Math.sqrt usado pra nos ajudar a realizar esse cáculo.
+
+
+
+### Exemplo Resultado
+```
+GET /raiz-quadrada/{number} (number=9)
+
+200 - OK
+Content-Type: text/plain
+
+Resultado: 3
 ```
 
 
@@ -411,25 +467,8 @@ public class HelloController {
 
 
 
-![Image](imagens/postman.png)
-- Testando aplicação
-
-
-
-### !Endpoint de Teste
-```
-GET /sqr-root/{number} (number=9)
-
-200 - OK
-Content-Type: text/plain
-
-Resultado: 3
-```
-
-
-
-### Explorando cenários
-- Criar estrutura fake pra testar mockando* dados
+### Explorando cenários (CRUD)
+- Criar CRUD 
 Note:
 - Criar modelo entidade
 - Criar método que retorne uma lista fake
@@ -491,8 +530,30 @@ public List<String> get() {
 
 
 
-### !Usando testes automatizados
+### Validação
+- 
+
+
+### Testes
 - Rest Assured
+
+
+
+### Swagger
+- O que é?
+- Como fazer?
+
+
+### Desafio CM
+- O que é?
+- Cronograma
+    - Desenvolvimento: 03/03 - 04/03
+    - Análise: 05/03 - 07/03
+    - Resultado: 08/03
+
+
+
+### Dúvidas?
 
 
 

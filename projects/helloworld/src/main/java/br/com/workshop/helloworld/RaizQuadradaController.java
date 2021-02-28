@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class RaizQuadradaController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/raiz-quadrada/{numero}")
-    public ResultadoRaiz calculaRaizQuadrada(@PathVariable("numero") Long numero) {
-        // Map<String, Double> mapRetorno = new HashMap<>();
-        // mapRetorno.put("resultado", calculadoraRaizQuadrada(numero));
-        return new ResultadoRaiz(calculadoraRaizQuadrada(numero));
+    public Map<String, Double> calculaRaizQuadrada(@PathVariable("numero") Long numero) {
+        Map<String, Double> mapRetorno = new HashMap<>();
+        mapRetorno.put("resultado", calculadoraRaizQuadrada(numero));
+        return mapRetorno;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/raiz-quadrada-qs")
@@ -24,23 +24,14 @@ public class RaizQuadradaController {
         return calculadoraRaizQuadrada(numero);
     }
 
+    @RequestMapping(method = RequestMethod.GET, 
+                  path = "/raiz-quadrada-2/{numero}")
+    public Double calculaRaizQuadrada2(@PathVariable Long numero) {
+        return Math.sqrt(numero.doubleValue());
+    }
+
     private Double calculadoraRaizQuadrada(Long numero) {
         return Math.sqrt(numero.doubleValue());
     }
     
-}
-
-class ResultadoRaiz {
-    private Double resultado;
-    public ResultadoRaiz(Double resultado) {
-        this.resultado = resultado;
-    }
-
-    public Double getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(Double resultado) {
-        this.resultado = resultado;
-    }
 }

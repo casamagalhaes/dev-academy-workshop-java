@@ -11,5 +11,10 @@ public class HelloController {
     public String hello() {
         return "Hello, World!";
     }
+
+    @RequestMapping(method = RequestMethod.GET, path="/helloworld")
+    public String helloworld() {
+        return "Hello, World!";
+    }
     
 }
