@@ -42,13 +42,14 @@ Note: Essas descrições são parcialmente baseado na realidade...
 <h6> Dia 1 </h6>
 <span style="font-size: 17px"> 
 
- - Conceitos API e REST
+ - Conceitos 
+    - HTTP
+    - API
+    - REST
  
  - Iniciando com Spring Boot
  
  - Hello API - `/hello`
-
- - Mão na massa: API CRUD
 
 </span>
 
@@ -58,55 +59,27 @@ Note: Essas descrições são parcialmente baseado na realidade...
 
 <span style="font-size: 17px"> 
 
+ - Mão na massa: API CRUD
+
  - Validações
  
  - Testes
 
- - Documentação (Swagger)
+ - Documentação 
+    - Swagger
 
- - Querying (Overview)
+</span>
+</div>
+</div>
+Note:
+- Querying (Overview)
   - FiQL
   - GraphQL
   - Paginação
 
 
-</span>
-</div>
-</div>
-
-
 
 ## Conceitos
-
-
-
-![Image](imagens/api.png)
-Note: 
-- Falar das conexões
-- Exemplos de APIs
-
-
-
-### API
-
-- _Application Programming Interface_
-- Conjunto de instruções e padrões de programação que servem para *fornecer dados e informações* relevantes de uma determinada aplicação
-- Vantagens
-- Exemplos: (PIX)
-Note:
-- Outras coisas de APIs 
-
-
-
-### Evolução API
-![Image](imagens/api-history.png)
-Note: 
-- EDI de 1948 com 1a implementação nos anos 1970, aeroporto de Londres; 
-- RPC dos anos 1970 com 1a implementação em 1982, depois XEROX, SUN...
-- CORBA (EAI), nos anos 1990, é uma das primeiras formas de API moderna, por permitir sistemas com diferentes implementações se comunicar, sem forçar uma alteração na sua implementação e estrutura
-- SOA, com o advento do XML as integrações ficaram mais focadas em webservices.
-- Microservices foi uma variação que entrou em cena quando SOA passou a ter predominância no mercado. Nos anos 2010s as Web APIs não só se tornaram relevantes mas dominaram o mercado como padrão para integração de apicações e serviços.
-
 
 
 
@@ -233,7 +206,53 @@ referencia: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods
         > <span style="font-size: 20px; color: gray">data: {id: 101, descricao: "A volta dos que não foram"} </span>
 - `DELETE`: 
     - www.livraria.com/livros/100
+
+
+
+![Image](imagens/api.png)
+Note: 
+- Por que APIs? Pra quê servem?
+    - Aplicações sendo consumidas por diversos meios (web, smartphones, etc)
+    - Muitos sistemas buscam se integrar, compartilhar/consumir informações
+- As APIs vieram pra faciliar esse meio campo
+- Criando uma forma de integração fluida
+
+
+
+### API
+
+- _Application Programming Interface_
+- Conjunto de instruções e padrões de programação que servem para *fornecer dados e informações* relevantes de uma determinada aplicação
+- Vantagens
+- Exemplos: (PIX)
 Note:
+- Em português, Interface de Programação de Aplicações
+- Contrato para que outras aplicações se integrem com outra aplicação
+
+
+
+
+### Exemplos de APIs
+- PagSeguro, PayPal
+
+- AWS, Azure
+
+- Facebook, Google
+
+- Booking
+Note: 
+- Empresas que disponibilizam API para que aplicações consigam se integrar aos seus sistemas e usar os serviços.
+
+
+
+### Evolução API
+![Image](imagens/api-history.png)
+Note: 
+- EDI de 1948 com 1a implementação nos anos 1970, aeroporto de Londres; 
+- RPC dos anos 1970 com 1a implementação em 1982, depois XEROX, SUN...
+- CORBA (EAI), nos anos 1990, é uma das primeiras formas de API moderna, por permitir sistemas com diferentes implementações se comunicar, sem forçar uma alteração na sua implementação e estrutura
+- SOA, com o advento do XML as integrações ficaram mais focadas em webservices.
+- Microservices foi uma variação que entrou em cena quando SOA passou a ter predominância no mercado. Nos anos 2010s as Web APIs não só se tornaram relevantes mas dominaram o mercado como padrão para integração de apicações e serviços.
 - Agora que já vimos boa parte da base da comunicação existente na wbe, vamos partir agora pra uma abstração de arquitetura, onde nos permitirá criar projetos bem definidos e viabilizar uma melhor comunicação entre aplicações.
 
 
