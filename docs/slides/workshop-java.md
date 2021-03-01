@@ -16,17 +16,22 @@ Note: Essas descrições são parcialmente baseado na realidade...
 
 
 #### Pablo Monteiro
-- Java dev há 200 anos, trocou o chapéu de vaqueiro e a botina pelo teclado e mouse. Hoje é Dev leader na Casa Magalhães e um dos veteranos no time do Varejofacil.
+- Java dev há 200 anos
+- Trocou o chapéu de vaqueiro e a botina pelo teclado e mouse
+- Hoje é Dev Leader na Casa Magalhães e um dos veteranos no time do Varejofacil.
 
 
 
 #### Giva
-- Programou o portão da caverna de tesouros de Alibabá. A chave criptografada "Abra-te sésamo" é de autoria dele. Atualmente arquiteto do Varejofacil, é também conhecido como "O Oráculo do varejo".
+- Programou o portão da caverna de tesouros de Alibabá. 
+- A chave criptografada "Abra-te sésamo" é de autoria dele. 
+- Atualmente arquiteto do Varejofacil, é também conhecido como **"O Oráculo do Varejo"**.
 
 
 
 #### Daniel Chaves
-- Quando criança, mamãe bateu na cabeça dele e disse: "Esse menino vai ser programador Java". Em 2005 a profecia se concretizou e hoje é arquiteto do Varejofacil.
+- Quando criança, mamãe bateu na cabeça dele e disse: _"Esse menino vai ser programador Java"_. 
+- Em 2005 a profecia se concretizou e hoje é um arquiteto phodão do Varejofacil.
 
 
 
@@ -51,7 +56,7 @@ Note: Essas descrições são parcialmente baseado na realidade...
  
  - Hello API - `/hello`
 
- - Mão na massa: API CRUD
+ - Mão na massa: API CRUD (parte 1)
 
 </span>
 
@@ -61,7 +66,7 @@ Note: Essas descrições são parcialmente baseado na realidade...
 
 <span style="font-size: 17px"> 
 
-- Mão na massa: API CRUD (Cont.)
+- Mão na massa: API CRUD (Parte 2)
 
 - Validações
  
@@ -73,11 +78,6 @@ Note: Essas descrições são parcialmente baseado na realidade...
 </span>
 </div>
 </div>
-Note:
-- Querying (Overview)
-  - FiQL
-  - GraphQL
-  - Paginação
 
 
 
@@ -88,13 +88,12 @@ Note:
 ![Image](imagens/http.png)
 Note:
 - basicamente é o protocolo de comunicação que rege a maioria das interações na web
-- se comunica usando mensagens
 - bastante usado na arquitetura cliente-servidor
+- se comunica usando mensagens
 
 
 
-### HTTP
-- _Hipertext Transfer Protocol_
+- _Hipertext Transfer Protocol_ (HTTP)
 - Projetado para permitir elementos conectados em rede estabelecer comunicação cliente-servidor
 - Protocolo de camada de aplicação projetado dentro do framework da suite de protocolos de internet (TCP/IP)
 - Baseado em requisição - resposta (Request/Response)
@@ -215,18 +214,15 @@ referencia: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods
 ![Image](imagens/api.png)
 Note: 
 - Por que APIs? Pra quê servem?
-    - Aplicações sendo consumidas por diversos meios (web, smartphones, etc)
+    - Hoje em dia as aplicações sendo consumidas por diversos meios (web, smartphones, etc)
     - Muitos sistemas buscam se integrar, compartilhar/consumir informações
 - As APIs vieram pra faciliar esse meio campo
 - Criando uma forma de integração fluida
 
 
 
-### API
-
-- _Application Programming Interface_
-- Conjunto de instruções e padrões de programação que servem para *fornecer dados e informações* relevantes de uma determinada aplicação
-- Exemplos: (PIX)
+- _Application Programming Interface_ (API)
+- Conjunto de instruções e padrões de programação que servem para **fornecer dados e informações** relevantes de uma determinada aplicação
 Note:
 - Em português, Interface de Programação de Aplicações
 - Contrato para que outras aplicações se integrem com outra aplicação
@@ -311,29 +307,48 @@ Note:
 
 
 
+### REST X RESTful?
+- O divisor de águas são os princípios!!
+Note:
+- Alguns mais xiitas só consideram uma API RESTful se tiverem os 6 princípios implementados
 
-### E RESTful?
+
+
+### RESTful
 - Princípios:
     - _Cliente - servidor_
     - _Stateless_
     - _Cacheable_
-    - _Layered system_
+    - Sistema em Camadas (_Layered system_)
     - Código sob demanda
-    - Interfaces Bem definidas (HATEOAS)
-Note: 
+Note:
 - São 6 os requisitos que definem uma arquitetura RESTful. 
 - *Cliente-servidor*: deixa bem claro o que faz parte do cliente e o que faz parte do servidor. EX: cliente não precisa saber como os dados são salvos
 - *stateless*: cada comunicação é independente, ou seja, ela precisa mandar toda a informação necessária; 
 - *cacheability*: deve facilitar o cache do cliente (capacidade de fornecer info para guardar/expirar respostas); 
-    - suporte a camadas de sistema (proxy, load balancer não deve interferir na comunicação); 
+    - suporte a camadas de sistema (proxy, load balancer não deve interferir na comunicação);
 - *Sistema de Camadas*: uso de camadas pra facilitar a escalabilidade, confiabilidade e segurança
 - *Código sobre demanda*: enviar apenas as informações do recurso de acordo com o solicitado. (O servidor pode eventualmente enviar código para o cliente executar...)
+
+
+
+### E o 6 princípio?
+- Princípio (Cont.)
+    - Interfaces bem definidas
+        - Identificação de recurso (`/pessoas`)
+        - Manipulação de recursos por suas representações
+        - Mensagens auto descritivas
+        - HATEOAS
+Note:
 - *Interfaces bem definicas*: forma de identificar os recursos. É devolvida com a mensagem que outras rodas sobre o recurso, pra conseguir mais informações
+    - Identificação de recurso nas requisições (`/pessoas`)
+    - Manipulação de recursos por suas representações
+    - Mensagens auto descritivas
     - HATEOAS: recursos bem identificados; com a resposta de um get eu consigo fazer um post ou patch; headers (text/json), http status, ajudam a descrever as ações; Hypermedia as the engine of application state - assim como usuario acessando uma pagina as mensagens contem "links" para navegar pelos recursos
 
 
 
-### Exemplo HATEAOS
+### Exemplo HATEOAS
 - Request
 ```log
 GET /pessoas/423
@@ -342,7 +357,7 @@ Accept: text/json
 - Response
 ```log
 HTTP 200 - OK
-Content-Type: text/json
+Content-Type: application/json
 Content-Length: ...
 {
     pessoaId: 423,
@@ -355,25 +370,22 @@ Content-Length: ...
 }
 ```
 
-Note: Resposta textual (HTML, XML, JSON) e status HTTP. HATEOAS concede links para navegação e se comporta conforme o estado.
-- Slides Removidos
-### !Nera 6? Falta um...
+Note: 
+- Resposta textual (HTML, XML, JSON) e status HTTP. 
+- HATEOAS concede links para navegação e se comporta conforme o estado.
 
-#### !Interface uniforme
-- Identificação de recurso nas requisições (`/pessoas`)
-- Manipulação de recursos por suas representações
-- Mensagens auto descritivas
 
 
 
 ![Image](imagens/maos-a-obra.png)
+Note:
+- Visto um pouco da teoria que envolve o desenvolvimento de uma API REST, vamos praticar um pouco!
 
 
 
 ![Image](imagens/springboot-no-bg.png)
-- Spring Initializr
+- Spring Initializr (https://start.spring.io/)
     - Configuração
-        - artifactId
     - Geração do projeto
 Note: 
 - o que é Spring Initializr?
@@ -389,12 +401,29 @@ Note:
     - Java Extension Pack
     - Lombok
 - Run
-    - Abrir aba **Spring Boot Dashboard**
+    - Menu Terminal, abrir novo **Terminal**
+              ./gradlew bootRun 
     - Acessar: _localhost:8080_
 
 
 
+![Image](imagens/erro-primeira-pagina.png)
+Note:
+- Página de erro de recurso não encontrado (Status 404)
+- Antes de corrigir, vamos falar um pouco sobre um padrão de desenvolvimento que usaremos pra dividir nossa aplicação em camadas.
+
+
+
 ![Image](imagens/mvc.png)
+Note: 
+- Padrão que divide projeto em camadas
+- Model:
+    - camada principal, tudo gira em torno dela
+    - escrita, leitura, validações, etc
+- View: camada de interação com usuário
+    - no uso de API não temos necessariamente essa camada
+    - nos nossos exemplos, podemos dizer que ela é o Postman/browser
+- Controller: responsável por se comunicar com a view e receber e enviar respostas para as msgs recebidas
 
 
 
@@ -423,13 +452,13 @@ public class HelloController {
 - Query String (**/pessoa?id=1**)
 ```
 ...
-void metodo(@RequestParam Long numero){...}
+void metodo(@RequestParam Long id){...}
 ...
 ```
 - URI (**/pessoa/1**)
 ```
 ...
-void metodo(@PathVariable Long numero){...}
+void metodo(@PathVariable Long id){...}
 ...
 ```
 
@@ -461,67 +490,36 @@ Resultado: 3
 
 
 
-### !Notas
-- Erros comuns (falso positivo ex. HTTP Status 200 e no body msg erro);
-- Falar sobre versionamento de APIs (tb versão do modelo);
+### Desafio 1:
+- Criar rota da raiz quadrada usando String Query
+        localhost:8080/raiz-quadrada/query-string?numero=9
 
 
 
-### Explorando cenários (CRUD)
-- Criar CRUD 
+### Explorando cenários
+- API distribuidora de bebidas
+- Usando dados em memória
 Note:
-- Criar modelo entidade
-- Criar método que retorne uma lista fake
-- Explicar o que é MOCK
-
-//Exemplo1
-
-GET /sqr-root/:number
-
-200 - OK
-
-Content-Type: text/plain
-
-422
-
-//Exemplo2
-
-/frutas
-
-List<String> frutasArray = new ArrayList();
-
-POST /frutas
-Content-Type: text/plain
-
-maçã
-
-public void add(@RequestBody String fruta) {
-	frutasArray.add(fruta);
-}
-
-GET /frutas
-
-public List<String> get() {
-	return frutasArray;
-}
+- Criar controller Bebidas
+- Criar lista pra armazenar dados dados fake
 
 
 
-### Consultando entidade
-- GET
-    - Ajustar método pra retornar lista fake
+### Cenários
+- Buscar todas as bebidas (GET)
+- Gravar uma nova bebida (POST)
+- Remover uma bebida (DELETE)
+- Atualizar uma bebida (PUT)
 
 
 
-### Gravando entidade
-- POST
-    - Gravar entidade na lista fake
-
-
-
-### Removendo entidade
-- DELETE
-    - Remover entidade da lista fake
+### Desafio 2
+- Criar pesquisa de bebida por parte do nome (Comece com)
+    - Ex:
+            /bebidas/a
+    - Resultado:
+            aguardente
+            agua
 
 
 
@@ -536,6 +534,14 @@ public List<String> get() {
 
 ### Testes
 - Rest Assured
+
+
+
+### Outros
+- Erros comuns (falso positivo) 
+    - Ex. HTTP Status 200 e no body msg erro);
+- Falar sobre versionamento de APIs 
+    - Versão do modelo;
 
 
 
