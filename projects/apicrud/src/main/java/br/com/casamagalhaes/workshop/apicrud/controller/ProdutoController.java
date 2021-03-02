@@ -1,15 +1,18 @@
 package br.com.casamagalhaes.workshop.apicrud.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityNotFoundException;
-import javax.websocket.server.PathParam;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +27,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.casamagalhaes.workshop.apicrud.model.Produto;
 import br.com.casamagalhaes.workshop.apicrud.service.ProdutoService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Produto")
 @RestController
-@RequestMapping(path = "/produtos")
+@RequestMapping(path = "/produtos",  
+  consumes = MediaType.APPLICATION_JSON_VALUE, 
+  produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProdutoController {
     
     @Autowired
@@ -34,16 +41,12 @@ public class ProdutoController {
 
     @GetMapping({"/", ""})
     public List<Produto> listarTodos() {
-                
         return service.findAll();
     }
 
-
     @GetMapping({"/paginada"})
-    public Page<Produto> listarTodos(
-            @RequestParam Integer numeroPagina, 
-            @RequestParam Integer tamanhoPagina) {
-
+    public Page<Produto> listarTodos(@RequestParam Integer numeroPagina, 
+        @RequestParam Integer tamanhoPagina) {
         return service.listarTodosPaginado(numeroPagina, tamanhoPagina);
     }
 
@@ -57,8 +60,9 @@ public class ProdutoController {
         return service.findByDescricao(descricao);
     }
 
-    @PostMapping(path = "/")
-    public Produto salvar(@RequestBody Produto produto) {
+    @PostMapping({"/", ""})
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Produto salvar(@Valid @RequestBody Produto produto) {
         return service.save(produto);
     }
 
@@ -73,6 +77,7 @@ public class ProdutoController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void remove(@PathVariable Long id) {
         service.remove(id);
     }
@@ -84,5 +89,18 @@ public class ProdutoController {
     @ExceptionHandler(UnsupportedOperationException.class)
     @ResponseStatus(value = HttpStatus.UNPROCESSABLE_ENTITY)
     public void unsupport(){}
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
+    }    
+    
 
 }

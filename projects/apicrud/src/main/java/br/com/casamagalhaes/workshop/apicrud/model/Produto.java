@@ -7,6 +7,8 @@ import javax.persistence.EnumType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import br.com.casamagalhaes.workshop.apicrud.enums.UnidadeMedida;
 
@@ -18,6 +20,8 @@ public class Produto {
     @Column(name="id_produto")
     private Long id;
 
+    @NotEmpty(message = "descrição é obrigatória")
+    @Size(min = 4, max = 100, message = "descrição deve ter no mínimo 4 e no máximo 50 caracteres")
     private String descricao;
 
     @Enumerated(EnumType.STRING)
